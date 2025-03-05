@@ -171,11 +171,18 @@
 </head>
 
 <body>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="audio/hbd1.mp3" type="audio/mp3">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
     <div class="container">
         <h1>❤️🎉 Selamat Ulang Tahun Mba Ku Sayang 🎂❤️</h1>
         <p class="message">Semoga menjadi pribadi yang baik dari sebelumnya ya Sayang dan Semoga apa yang kmu cita
             citakan tercapai di tahun ini ya sayang, aamiin🎁❤️❤️❤️❤️</p>
-        <button class="btn" onclick="showMessage()">Klik untuk Kejutan!</button>
+        <button class="btn" onclick="showMessage()">PENCET YA</button>
+        <button id="playButton" onclick="playMusic()">Putar Musik 🎶</button>
+
     </div>
 
     <div class="gallery">
@@ -185,7 +192,22 @@
     </div>
 
     <script>
+        function playMusic() {
+            let music = document.getElementById("backgroundMusic");
+            music.play();
+            document.getElementById("playButton").style.display = "none"; // Sembunyikan tombol setelah diputar
+        }
 
+        window.addEventListener("load", function () {
+            let music = document.getElementById("backgroundMusic");
+            let playPromise = music.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    document.getElementById("playButton").style.display = "block"; // Tampilkan tombol jika autoplay gagal
+                });
+            }
+        });
         function showMessage() {
             document.querySelector('.message').style.opacity = 1;
             createBalloons();
