@@ -162,13 +162,19 @@
                 transform: translateY(110vh) rotate(360deg);
             }
         }
+
+        .blink {
+            color: black;
+            /* Warna teks hitam */
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>🎉 Selamat Ulang Tahun Sayang Ku 🎂</h1>
-        <p class="message">Semoga menjadi pribadi yang baik dari sebelumnya ya Sayang,🎁</p>
+        <h1>❤️🎉 Selamat Ulang Tahun Mba Ku Sayang 🎂❤️</h1>
+        <p class="message">Semoga menjadi pribadi yang baik dari sebelumnya ya Sayang dan Semoga apa yang kmu cita
+            citakan tercapai di tahun ini ya sayang, aamiin🎁❤️❤️❤️❤️</p>
         <button class="btn" onclick="showMessage()">Klik untuk Kejutan!</button>
     </div>
 
@@ -179,6 +185,7 @@
     </div>
 
     <script>
+
         function showMessage() {
             document.querySelector('.message').style.opacity = 1;
             createBalloons();
@@ -218,8 +225,13 @@
             }
         }
 
+        setInterval(function () {
+            let text = document.querySelector(".blink");
+            text.style.visibility = (text.style.visibility === "hidden") ? "visible" : "hidden";
+        }, 500); // Kedap-kedip setiap 500ms (0.5 detik)
         createConfetti();
     </script>
 </body>
 
 </html>
+<h5 class="text-center blink">Created By Mas Mu Yang Orang Serang</h5>
